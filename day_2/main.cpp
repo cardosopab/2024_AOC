@@ -87,13 +87,8 @@ void part_2(std::string file_name) {
 
     bool safe = false;
     for (int i = 0; i < arr.size(); i++) {
-      std::vector<int> temp;
-      temp.reserve(arr.size() - 1);
-      for (int j = 0; j < arr.size(); j++) {
-        if (i != j) {
-          temp.push_back(arr[j]);
-        }
-      }
+      std::vector<int> temp(arr.begin(), arr.begin() + i);
+      temp.insert(temp.end(), arr.begin() + i + 1, arr.end());
 
       if (is_safe(temp)) {
         safe = true;
